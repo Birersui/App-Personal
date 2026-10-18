@@ -1,0 +1,16 @@
+node_modules/
+android/
+ios/
+.tmp-*
+*.log
+.DS_Store
+
+# entorno local / sistema (no forma parte de la app)
+.cache/
+.config/
+.local/
+.npm/
+.bash_history
+.bashrc
+.gitconfig
+.server.cjs

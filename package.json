@@ -1,0 +1,28 @@
+{
+  "name": "mis-finanzas",
+  "version": "1.0.0",
+  "description": "App personal offline para registrar ingresos, deudas y notas. Datos en SQLite local.",
+  "private": true,
+  "scripts": {
+    "postinstall": "node scripts/copy-sql-assets.js",
+    "build": "node scripts/make-icons.mjs && node scripts/build.mjs",
+    "test": "cd www && node ../scripts/test-db.mjs",
+    "serve": "npm run build && npx --yes serve www -l 8080",
+    "sync": "npm run build && cap sync android",
+    "open:android": "cap open android",
+    "add:android": "cap add android",
+    "patch:android": "node scripts/patch-android.mjs"
+  },
+  "dependencies": {
+    "@capacitor/android": "^6.2.0",
+    "@capacitor/cli": "^6.2.0",
+    "@capacitor/core": "^6.2.0",
+    "@capacitor/filesystem": "^6.0.2",
+    "@capacitor/local-notifications": "^6.1.0",
+    "@capacitor/share": "^6.0.4",
+    "sql.js": "^1.12.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.24.0"
+  }
+}

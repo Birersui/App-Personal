@@ -1,0 +1,14 @@
+{
+  "appId": "com.personal.misfinanzas",
+  "appName": "Mis Finanzas",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https"
+  },
+  "plugins": {
+    "LocalNotifications": {
+      "iconColor": "#4f8cff"
+    }
+  }
+}

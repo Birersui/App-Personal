@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
+  <meta name="theme-color" content="#0f141c" />
+  <meta name="description" content="App personal offline para ingresos, deudas y notas." />
+  <title>Mis Finanzas</title>
+  <script>
+    (function () {
+      try {
+        var p = localStorage.getItem("mf-theme") || "system";
+        var dark =
+          p === "dark" ||
+          (p === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+        document.documentElement.dataset.theme = dark ? "dark" : "light";
+        document.documentElement.dataset.palette = localStorage.getItem("mf-palette") || "blue";
+      } catch (e) {
+        document.documentElement.dataset.theme = "dark";
+      }
+    })();
+  </script>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="vendor/sql-wasm.js"></script>
+</head>
+<body>
+  <header>
+    <div class="header-titles">
+      <span class="header-brand">Mis Finanzas</span>
+      <h1 id="header-title">Resumen</h1>
+    </div>
+    <div class="header-right">
+      <span id="header-balance">$0.00</span>
+      <button id="theme-toggle" class="icon-btn" title="Cambiar tema" aria-label="Cambiar tema">🌙</button>
+    </div>
+  </header>
+
+  <main id="view"></main>
+
+  <nav id="tabbar">
+    <button class="nav-btn active" data-tab="summary"><span class="ico">📊</span>Resumen</button>
+    <button class="nav-btn" data-tab="incomes"><span class="ico">💰</span>Ingresos</button>
+    <button class="nav-btn" data-tab="expenses"><span class="ico">🛒</span>Gastos</button>
+    <button class="nav-btn" data-tab="debts"><span class="ico">💳</span>Deudas</button>
+    <button class="nav-btn" data-tab="goals"><span class="ico">🎯</span>Metas</button>
+    <button class="nav-btn" data-tab="notes"><span class="ico">📝</span>Notas</button>
+    <button class="nav-btn" data-tab="settings"><span class="ico">⚙️</span>Ajustes</button>
+  </nav>
+
+  <div id="sheet">
+    <div class="sheet-card">
+      <div class="sheet-head">
+        <h2 id="sheet-title">Formulario</h2>
+        <button class="sheet-close" data-close>&times;</button>
+      </div>
+      <form id="sheet-form">
+        <div id="sheet-body"></div>
+        <button type="submit" class="btn primary sheet-submit">Guardar</button>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="js/bundle.js"></script>
+</body>
+</html>
