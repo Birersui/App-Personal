@@ -14,3 +14,10 @@ ios/
 .bashrc
 .gitconfig
 .server.cjs
+
+# claves de firma y artefactos (nunca subir)
+release-key/
+*.keystore
+*.jks
+*.aab
+*.apk
